@@ -1,0 +1,134 @@
+Parameter,Value,Unit,Description
+# Domain Control
+domain_size_m,5000,m,World width/height
+grid_resolution_m,100,m,Cell size (matches R_A_base=200m ~ 2 cells)
+time_step_weather_s,10,s,Weather update interval (real-time responsive)
+time_step_ecology_s,30,s,Ecology update interval (real-time responsive)
+simulation_speed,1.0,x,Simulation speed multiplier
+
+# Base Climate - Annual Patterns
+temp_mean_c,28,C,Annual mean temperature (semi-arid)
+temp_diurnal_c,10,C,Daily temperature swing
+temp_seasonal_c,15,C,Seasonal amplitude (10°C cool to 45°C hot)
+wind_mean_ms,6,m/s,Average wind speed (base W_base)
+wind_storm_ms,20,m/s,Storm gust speed
+precip_desert_mm_yr,300,mm/yr,Annual precipitation (episodic)
+precip_grassland_mm_yr,350,mm/yr,Grassland annual precipitation
+precip_forest_mm_yr,400,mm/yr,Forest annual precipitation
+storm_frequency_days,24,days,Average days between storms (15/year)
+storm_intensity_mm,50,mm,Storm rainfall mean (P_storm_mean)
+humidity_desert_pct,20,percent,Desert relative humidity (dry season)
+humidity_grassland_pct,35,percent,Grassland relative humidity
+humidity_forest_pct,60,percent,Forest relative humidity
+fog_days_yr,80,days,Fog days per year (valleys)
+
+# Seasonal Climate Modifiers
+season_dry_hot_months,4,months,Months 1-4: 35-45°C dry
+season_storm_months,2,months,Months 5-6: monsoon storms
+season_humid_months,3,months,Months 7-9: mild humid
+season_cool_dry_months,3,months,Months 10-12: cool dry
+storm_temp_cooling,5,C,Temperature drop during storms
+monsoon_humidity_boost,50,percent,Extra humidity during monsoon
+
+# Terrain Modifiers
+plateau_wind_mult,1.35,x,Wind acceleration on plateaus (m_plateau)
+canyon_wind_mult,1.5,x,Wind channeling in canyons (m_canyon)
+valley_wind_mult,0.6,x,Wind damping in valleys (m_valley)
+forest_wind_drag,0.6,x,Wind reduction in forests (m_forest)
+water_cooling_c,-3,C,Temperature reduction near water
+desert_heating_c,8,C,Extra heating in desert (hot season)
+plateau_temp_drop_c,-4,C,Temperature drop on plateaus
+canyon_temp_rise_c,2,C,Temperature rise in canyons
+orographic_boost_pct,20,percent,Precipitation boost per 100m elevation
+rain_shadow_reduction_pct,30,percent,Precipitation reduction on leeward side
+
+# Soil Properties - Desert (updated ranges)
+desert_porosity,0.35,fraction,Soil porosity
+desert_field_capacity_pct,8,percent,Field capacity (θ_fc_desert=0.08)
+desert_wilting_point_pct,3,percent,Wilting point (θ_wp_desert=0.03)
+desert_depth_m,0.5,m,Soil depth
+desert_initial_moisture_pct,4,percent,Starting soil moisture
+desert_evap_rate_mm_day,3,mm/day,Evaporation rate (1-5mm range)
+desert_infiltration_mm_hr,2,mm/hr,Infiltration rate
+desert_runoff_coeff,0.8,fraction,Runoff coefficient
+desert_base_toxicity,2.2,0-3,Initial toxicity level (τ_init_desert)
+
+# Soil Properties - Grassland
+grassland_porosity,0.40,fraction,Soil porosity
+grassland_field_capacity_pct,15,percent,Field capacity
+grassland_wilting_point_pct,6,percent,Wilting point
+grassland_depth_m,1.0,m,Soil depth
+grassland_initial_moisture_pct,12,percent,Starting soil moisture
+grassland_evap_rate_mm_day,2,mm/day,Evaporation rate
+grassland_infiltration_mm_hr,5,mm/hr,Infiltration rate
+grassland_runoff_coeff,0.3,fraction,Runoff coefficient
+grassland_base_toxicity,0.8,0-3,Initial toxicity level (low for grass)
+
+# Soil Properties - Forest
+forest_porosity,0.45,fraction,Soil porosity
+forest_field_capacity_pct,22,percent,Field capacity
+forest_wilting_point_pct,10,percent,Wilting point
+forest_depth_m,2.0,m,Soil depth
+forest_initial_moisture_pct,18,percent,Starting soil moisture
+forest_evap_rate_mm_day,1,mm/day,Evaporation rate (shaded)
+forest_infiltration_mm_hr,8,mm/hr,Infiltration rate
+forest_runoff_coeff,0.1,fraction,Runoff coefficient
+forest_base_toxicity,0.8,0-3,Initial toxicity level (τ_init_forest)
+
+# Water Bodies
+water_evap_rate_mm_day,2,mm/day,Evaporation from water
+water_humidity_boost_pct,20,percent,Extra humidity near water
+water_fog_chance_mult,2.0,x,Fog formation multiplier near water
+
+# Fungal Dynamics - Updated to Specification
+fungal_growth_rate_day,0.035,1/day,Maximum fungal growth rate (r_F)
+fungal_mortality_day,0.03,1/day,Base fungal mortality (m_F)
+fungal_spore_radius_cells,4,cells,Base spore dispersal radius
+fungal_spore_survival_prob,0.6,fraction,Spore survival probability
+fungal_humidity_threshold_pct,40,percent,Minimum humidity for growth
+fungal_drought_death_rate_day,0.03,1/day,Death rate when dry
+fungal_colonization_rate,0.5,1/day,Rate of new colonization
+storm_spore_multiplier,15,x,Spore production boost during storms
+
+# Spore System - Two Types (NEW)
+spore_emission_forest_seed,1.0,1/day,Forest seed-spore base (Y_A_base)
+spore_emission_forest_nonseed,5.0,1/day,Forest non-seed spore base (Y_B_base)
+spore_emission_mat_nonseed,2.0,1/day,Mat non-seed spore base (Y_B_mat)
+spore_range_seed_base,200,m,Seed spore dispersal distance (R_A_base)
+spore_range_nonseed_base,800,m,Non-seed dispersal distance (R_B_base)
+spore_wet_factor,0.10,fraction,Distance multiplier when wet (storm)
+spore_survival_decay,0.15,1/day,Airborne decay rate (λ_spore)
+spore_diffusion_coeff,200,m2/day,Turbulent diffusion (D_turb)
+spore_toxicity_multiplier,0.7,fraction,Spore production boost per τ unit
+
+# Toxicity System - Specification Compliant
+toxicity_range_max,3.0,0-3,Maximum toxicity level
+toxicity_natural_decay_day,0.0006,1/day,Natural background decay (k_tau_nat)
+toxicity_fungal_boost_day,0.04,1/day,Toxicity increase from mats (k_tau_mat)
+toxicity_forest_purify_day,0.015,1/day,Forest purification rate (k_tau_forest)
+toxicity_diffusion_rate,0.02,1/day,Spatial diffusion rate
+wind_toxicity_transport,0.04,1/day,Airborne toxin transport
+
+# Vegetation Dynamics - Updated
+veg_growth_rate_day,0.025,1/day,Grass growth rate (r_G)
+veg_drought_death_rate_day,0.05,1/day,Death rate when moisture low
+veg_toxicity_death_rate_day,0.08,1/day,Death rate when toxic
+veg_moisture_threshold_pct,5,percent,Minimum moisture for survival (θ_germ)
+veg_toxicity_threshold,2.0,0-3,Maximum toxicity for grass growth
+veg_establishment_prob,0.3,fraction,Probability of establishment
+forest_growth_rate_day,0.008,1/day,Forest growth rate (r_R)
+forest_mortality_day,0.001,1/day,Forest mortality rate (m_R)
+mat_to_forest_days,730,days,Mat persistence threshold (t_mat_to_forest_days)
+mat_to_forest_threshold,0.4,fraction,Min fungal biomass for conversion
+
+# Neutralization (Valley Intervention)
+neutralize_radius_cells,3,cells,Neutralization effect radius
+neutralize_toxicity_drop,0.8,0-3,Toxicity reduction per application
+neutralize_moisture_boost_pct,25,percent,Soil moisture boost
+neutralize_fungal_clear,1.0,fraction,Fungal cover cleared
+
+# Simulation Control
+simulation_paused,false,boolean,Start simulation paused
+log_frequency_days,1,days,How often to log state
+output_stats,true,boolean,Enable statistical output
+visualization_update_rate,0.1,s,UI update frequency

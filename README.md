@@ -1,6 +1,6 @@
-# MonoGame Terrain Generator
+# Terrain Generator/Simulation
 
-A MonoGame framework game that generates a terrain map with different biomes following the specified distribution:
+A MonoGame framework simulation that generates a terrain map with different biomes following the specified distribution:
 
 - **Desert**: The majority of the map (~66%)
 - **Grasslands**: Second most common (~18%), multiple clusters
